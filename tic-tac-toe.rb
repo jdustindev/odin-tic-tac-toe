@@ -69,7 +69,13 @@ class TicTacToeGame
         end
 
         # check if winner by diagonal
-        # TODO
+        ['X', 'Y'].each do |char|
+            @winner = char if (0..2).all? { |cell| @board[cell][cell] == char }
+        end
+
+        ['X', 'Y'].each do |char|
+            @winner = char if (0..2).all? { |cell| @board[cell][-1 - cell] == char }
+        end
     end
 
     def play
