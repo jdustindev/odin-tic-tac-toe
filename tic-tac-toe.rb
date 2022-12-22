@@ -62,7 +62,11 @@ class TicTacToeGame
         end
 
         # check if winner by column
-        # TODO
+        ['X', 'Y'].each do |char|
+            @board.transpose.each do |column|
+                @winner = char if column.all? { |cell| cell == char }
+            end
+        end
 
         # check if winner by diagonal
         # TODO
