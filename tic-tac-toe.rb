@@ -53,6 +53,21 @@ class TicTacToeGame
         @board[row][column] != 'X' && @board[row][column] != 'Y'
     end
 
+    def check_for_winner
+        # check if winner by row
+        ['X', 'Y'].each do |char|
+            @board.each do |row|
+                @winner = char if row.all? { |cell| cell == char }
+            end
+        end
+
+        # check if winner by column
+        # TODO
+
+        # check if winner by diagonal
+        # TODO
+    end
+
     def play
         error = nil
         until @winner
@@ -71,7 +86,12 @@ class TicTacToeGame
             else
                 @player_turn == 'X' ? @player_turn = 'Y' : @player_turn = 'X'
             end
+            check_for_winner
         end
+        system("clear")|| system("cls")
+        puts ''
+        display_board
+        puts "#{@winner} wins!"
     end
 end
 
